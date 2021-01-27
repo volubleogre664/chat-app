@@ -1,0 +1,228 @@
+.chat > .chat__body {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+}
+
+.chat > .chat__body > .chat__bodyHeader {
+  padding: 0.726em 1.05em;
+  display: flex;
+  align-items: center;
+  background-color: rgb(73, 73, 73);
+}
+
+.chat > .chat__body > .chat__bodyHeader > .chat__bodyHeaderImgContainer {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: rgb(224, 224, 224);
+  background: rgb(171, 171, 171);
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  margin-right: 0.6em;
+}
+
+.chat > .chat__body > .chat__bodyHeader > .chat__bodyHeaderUserInfo {
+  flex: 1;
+  font-size: 0.8rem;
+  color: rgb(255, 255, 255);
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyHeader
+  > .chat__bodyHeaderUserInfo
+  > .user__status {
+  font-size: smaller;
+  color: rgb(204, 204, 204);
+}
+
+.chat > .chat__body > .chat__bodyHeader > .chat__bodyHeaderIcons {
+  display: flex;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyHeader
+  > .chat__bodyHeaderIcons
+  > .iconContainer {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  background: rgb(171, 171, 171);
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  margin-right: 0.4em;
+}
+
+/* The main body CSS start here */
+.chat > .chat__body > .chat__bodyMain {
+  flex: 1;
+  padding: 1.05em;
+  overflow-y: auto;
+}
+
+.chat > .chat__body > .chat__bodyMain > .chat__bodyMainMsg {
+  margin-bottom: 1.05em;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg
+  > .chat__bodyMainMsgLeft {
+  display: flex;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg.sent
+  > .chat__bodyMainMsgLeft
+  > .msg__imgContainer {
+  display: none;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg
+  > .chat__bodyMainMsgLeft
+  > .msg__imgContainer {
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  background: rgb(171, 171, 171);
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  margin-right: 0.4em;
+  align-self: flex-end;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg
+  > .chat__bodyMainMsgLeft
+  > .msg__textContainer {
+  position: relative;
+  padding: 0.8em;
+  border-radius: 20px;
+  color: rgb(224, 224, 224);
+  font-size: 0.9rem;
+  background: rgb(132, 132, 132);
+  width: fit-content;
+  max-width: 65%;
+  z-index: 1;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg
+  > .chat__bodyMainMsgLeft
+  > .msg__textContainer::before {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  border-top-left-radius: 50%;
+  box-shadow: 0 -30px 0 0 rgb(132, 132, 132);
+  z-index: -1;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg.sent
+  > .chat__bodyMainMsgLeft
+  > .msg__textContainer {
+  margin-left: auto;
+  background: rgb(73, 73, 73);
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg.sent
+  > .chat__bodyMainMsgLeft
+  > .msg__textContainer::before {
+  right: 0;
+  left: unset;
+  border-top-right-radius: 50%;
+  border-top-left-radius: unset;
+  box-shadow: 0 -30px 0 0 rgb(73, 73, 73);
+}
+
+.chat > .chat__body > .chat__bodyMain > .chat__bodyMainMsg > .msg__timestamp {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: rgb(202, 202, 202);
+  margin-left: calc(1.05em + 45px + 0.4em);
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyMain
+  > .chat__bodyMainMsg.sent
+  > .msg__timestamp {
+  margin-left: calc(100% - 50px);
+}
+
+/* The footer CSS starts here man */
+.chat > .chat__body > .chat__bodyFooter {
+  padding: 1.05em;
+}
+
+.chat > .chat__body > .chat__bodyFooter > .chat__bodyFooterContainer {
+  padding: 0.5em 0.8em;
+  border: 1px solid rgb(162, 162, 162);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyFooter
+  > .chat__bodyFooterContainer
+  > .footerInput {
+  flex: 1;
+  font-size: 1.05rem;
+  margin: 0 0.5em;
+  border: none;
+  outline: none;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyFooter
+  > .chat__bodyFooterContainer
+  > .iconContainer {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: rgb(73, 73, 73);
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyFooter
+  > .chat__bodyFooterContainer
+  > .iconContainer:hover {
+  color: rgb(162, 162, 162);
+}
+
+.chat > .chat__body > .chat__bodyFooter > .chat__bodyFooterContainer > button {
+  border: none;
+  background: transparent;
+  outline: none;
+}

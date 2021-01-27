@@ -1,0 +1,142 @@
+.chat > .chat__sidebar {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat > .chat__sidebar > .chat__sidebarHeader {
+  padding: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
+  color: #fff;
+}
+
+.chat > .chat__sidebar > .chat__sidebarHeader > :nth-child(2) {
+  font-weight: 800;
+}
+
+.chat > .chat__sidebar > .chat__sidebarBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chat > .chat__sidebar > .chat__sidebarBody > .body__search {
+  background-color: rgb(224, 224, 224);
+  padding: 1em 1.05em;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__search
+  > .body__searchInput {
+  width: 100%;
+  height: 30px !important;
+  padding-left: 10px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+}
+
+.chat > .chat__sidebar > .chat__sidebarBody > .body__chats {
+  flex: 1;
+  background-color: rgb(224, 224, 224);
+  overflow: auto;
+}
+
+/* Dedicated to a single contact on sidebar */
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact {
+  padding: 0.9em;
+  background-color: rgb(78, 78, 78);
+  border-bottom: 2px solid rgb(112, 112, 112);
+  display: flex;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__imgContainer {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: rgb(224, 224, 224);
+  background: rgb(171, 171, 171);
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  margin-right: 0.6em;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__userInfo {
+  flex: 1;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__userInfo
+  > .contact__userInfoHead {
+  display: flex;
+  color: rgb(255, 255, 2255);
+  position: relative;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__userInfo
+  > .contact__userInfoHead
+  > .contact__userInfoName {
+  flex: 1;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__userInfo
+  > .contact__userInfoHead
+  > .contact__userInfoMsg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.15em 0.3em;
+  border-radius: 4px;
+  background-color: rgb(43, 43, 43);
+  display: grid;
+  place-items: center;
+  color: rgb(173, 173, 173);
+  font-size: 0.9rem;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact
+  > .contact__userInfo
+  > .contact__userInfoText {
+  font-size: 0.8rem;
+  color: rgb(162, 162, 162);
+}
