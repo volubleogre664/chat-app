@@ -12,10 +12,6 @@ const initialState = {
 
   contacts: [],
   messages: [],
-  pusher: {
-    pushr: null,
-    channel: null,
-  },
 };
 
 const Store = ({ children }) => {
