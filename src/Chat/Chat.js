@@ -1,45 +1,116 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
+import { Context } from "../store.js";
 import "./Chat.css";
+import Contact from "./Contact.js";
+import axios from "axios";
+import baseURL from "../axios";
 
 function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [state, dispatch] = useContext(Context);
   const [text, setText] = useState("");
-  const [state, setState] = useState(false);
+  const [textState, setTextState] = useState(false);
+  const [lastMessage, setLastMessage] = useState(false);
+
+  useEffect(() => {
+    if (lastMessage) {
+      (async function () {
+        await axios
+          .post(baseURL + "/message/new", lastMessage)
+          .then((data) => {
+            if (data.status === 201) {
+              dispatch({
+                type: "messages/added",
+                payload: { message: [data.data] },
+              });
+              console.log(typeof data.data);
+              setLastMessage(false);
+            }
+          })
+          .catch(() => {
+            alert(
+              "Could not send message... Please check internet and try again"
+            );
+          });
+      })();
+    }
+  }, [lastMessage, dispatch, setLastMessage]);
+
+  useEffect(() => {
+    (async function () {
+      if (state.user.currentChat === "") return;
+
+      await axios
+        .get(baseURL + "/message/sync", {
+          params: { from: state.user.id, to: state.user.currentChat },
+        })
+        .then((data) => {
+          if (data.status === 200) {
+            dispatch({
+              type: "messages/cleared",
+              payload: { message: [] },
+            });
+
+            dispatch({
+              type: "messages/added",
+              payload: { message: data.data },
+            });
+          }
+        })
+        .catch((err) => {
+          alert("Error getting messages from mongodb");
+          console.error(err);
+        });
+    })();
+  }, [state.user.id, state.user.currentChat, dispatch]);
 
   const handleInputChange = (e) => setText(e.target.value);
 
-  const handleCheckChange = (e) => setState(!state);
+  const handleCheckChange = () => setTextState(!textState);
+
+  //Getting messages from database
+  // ()();
 
   const handleSendClick = (e) => {
     e.preventDefault();
+
+    if (state.user.currentChat === "") {
+      alert("Please select who you chatting with on tthe left.");
+      return;
+    }
 
     const regex = / /gi;
     const str = text.replace(regex, "");
     if (text === "" || str === "") return;
 
     const d = new Date();
-    setMessages([
-      ...messages,
-      {
-        text: text,
-        time: `${formatTime(d.getHours())}:${formatTime(d.getMinutes())}`,
-        sent: state,
-      },
-    ]);
+
+    setLastMessage({
+      to: state.user.currentChat,
+      from: state.user.id,
+      time: `${formatTime(d.getHours())}:${formatTime(d.getMinutes())}`,
+      message: text,
+    });
+
+    console.log(lastMessage);
+    console.log(state.user.currentChat);
 
     setText("");
     document.querySelector(".footerInput").value = "";
-    // console.log(messages);
   };
 
   const formatTime = (val) => (val >= 10 ? val : `0${val}`);
+
+  if (!state.user.loggedIn) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="chat">
       <aside className="chat__sidebar">
         <header className="chat__sidebarHeader">
           <i className="fa fa-paper-plane" aria-hidden="true"></i>
-          <span>Chat</span>
+          <span>Chat | {state?.user?.name}</span>
           <i className="fas fa-ellipsis-v" aria-hidden="true"></i>
         </header>
 
@@ -53,39 +124,9 @@ function Chat() {
           </div>
 
           <div className="body__chats">
-            <div className="body__chatsContact">
-              <div className="contact__imgContainer">
-                <i className="fas fa-user"></i>
-              </div>
-
-              <div className="contact__userInfo">
-                <div className="contact__userInfoHead">
-                  <h3 className="contact__userInfoName">Demo Name</h3>
-                  <small className="contact__userInfoMsg">
-                    <sup>3</sup>
-                  </small>
-                </div>
-
-                <p className="contact__userInfoText">Placeholder message.</p>
-              </div>
-            </div>
-
-            <div className="body__chatsContact">
-              <div className="contact__imgContainer">
-                <i className="fas fa-user"></i>
-              </div>
-
-              <div className="contact__userInfo">
-                <div className="contact__userInfoHead">
-                  <h3 className="contact__userInfoName">Demo Name</h3>
-                  <small className="contact__userInfoMsg">
-                    <sup>309</sup>
-                  </small>
-                </div>
-
-                <p className="contact__userInfoText">Placeholder message.</p>
-              </div>
-            </div>
+            {state.contacts.map((item, i) => {
+              return <Contact item={item} key={i} />;
+            })}
           </div>
         </main>
       </aside>
@@ -119,11 +160,13 @@ function Chat() {
         </header>
 
         <main className="chat__bodyMain">
-          {messages.map((item, i) => {
+          {state.messages.map((item, i) => {
             return (
               <div
                 className={
-                  item.sent ? "sent chat__bodyMainMsg" : "chat__bodyMainMsg"
+                  item.from === state.user.id
+                    ? "sent chat__bodyMainMsg"
+                    : "chat__bodyMainMsg"
                 }
                 key={i}
               >
@@ -132,7 +175,7 @@ function Chat() {
                     <i className="fas fa-user"></i>
                   </div>
 
-                  <div className="msg__textContainer">{item.text}</div>
+                  <div className="msg__textContainer">{item.message}</div>
                 </div>
 
                 <span className="msg__timestamp">{item.time}</span>

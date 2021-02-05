@@ -58,7 +58,16 @@
   padding: 0.9em;
   background-color: rgb(78, 78, 78);
   border-bottom: 2px solid rgb(112, 112, 112);
+  cursor: pointer;
   display: flex;
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
+  > .body__chatsContact:hover {
+  background-color: rgb(112, 112, 112);
 }
 
 .chat
