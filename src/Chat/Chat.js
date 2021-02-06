@@ -1,22 +1,50 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../store.js";
-import "./Chat.css";
 import Contact from "./Contact.js";
-import axios from "axios";
-import baseURL from "../axios";
+import axios from "../axios";
+import Pusher from "pusher-js";
+import "./Chat.css";
 
 function Chat() {
   const [state, dispatch] = useContext(Context);
   const [text, setText] = useState("");
-  const [textState, setTextState] = useState(false);
   const [lastMessage, setLastMessage] = useState(false);
 
+  //Use effect hook helps with running code on the first render to set things up
+  //It takes a callback to do work and returns cleanup function.
+  //The second argument in useEffect is a array containing values that useEffect depends on.
+  //This means useEffect runs on first render then runs anytime sometthing dependency array changes
+  useEffect(() => {
+    const pusher = new Pusher("b815b20920e9773a8053", {
+      cluster: "ap2",
+    });
+
+    const channel = pusher.subscribe("message");
+    channel.bind("inserted", function (data) {
+      if (data.from !== state.user.id) {
+        dispatch({
+          type: "messages/added",
+          payload: { message: [data] },
+        });
+      }
+    });
+
+    //This is a cleanup function that is returned. It fixes inconsistency and prevents bugs
+    return function () {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+
+    //This useEffect will run only once on first render since state.user.is and dispatch never change
+  }, [state.user.id, dispatch]);
+
+  //Here we send a message to the database whenever lastMessage != false
   useEffect(() => {
     if (lastMessage) {
       (async function () {
         await axios
-          .post(baseURL + "/message/new", lastMessage)
+          .post("/message/new", lastMessage)
           .then((data) => {
             if (data.status === 201) {
               dispatch({
@@ -34,14 +62,18 @@ function Chat() {
           });
       })();
     }
+
+    //This useEffectt will run on first render and everytime lastMessage changes.
+    //dispatch and setLastMessage are functions so they never change
   }, [lastMessage, dispatch, setLastMessage]);
 
+  //This is where we get messages from database.
   useEffect(() => {
     (async function () {
       if (state.user.currentChat === "") return;
 
       await axios
-        .get(baseURL + "/message/sync", {
+        .get("/message/sync", {
           params: { from: state.user.id, to: state.user.currentChat },
         })
         .then((data) => {
@@ -62,11 +94,12 @@ function Chat() {
           console.error(err);
         });
     })();
+
+    //This useEffect only runs when state.user.currentChat changes.
+    // state.user.currentChat is the person you're currently chatting with
   }, [state.user.id, state.user.currentChat, dispatch]);
 
   const handleInputChange = (e) => setText(e.target.value);
-
-  const handleCheckChange = () => setTextState(!textState);
 
   //Getting messages from database
   // ()();
@@ -85,6 +118,7 @@ function Chat() {
 
     const d = new Date();
 
+    //Here we update lastMessage and it will invoke the second useEffect which will update the database
     setLastMessage({
       to: state.user.currentChat,
       from: state.user.id,
@@ -142,19 +176,13 @@ function Chat() {
             <span className="user__status">Last seen: 15:43</span>
           </div>
 
-          <input
-            type="checkbox"
-            id="sim"
-            onChange={(e) => handleCheckChange(e)}
-          />
-
           <div className="chat__bodyHeaderIcons">
             <span className="iconContainer">
               <i className="fas fa-paperclip" aria-hidden="true"></i>
             </span>
 
             <span className="iconContainer">
-              <i className="fas fa-ellipsis-v" aria-hidden="true"></i>
+              <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
             </span>
           </div>
         </header>

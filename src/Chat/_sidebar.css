@@ -74,6 +74,14 @@
   > .chat__sidebar
   > .chat__sidebarBody
   > .body__chats
+  > .body__chatsContact.active {
+  background-color: rgb(112, 112, 112);
+}
+
+.chat
+  > .chat__sidebar
+  > .chat__sidebarBody
+  > .body__chats
   > .body__chatsContact
   > .contact__imgContainer {
   width: 45px;

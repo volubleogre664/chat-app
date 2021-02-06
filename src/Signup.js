@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
-import baseURL from "./axios";
+import axios from "./axios";
 import { Context } from "./store.js";
 
 function Signup() {
@@ -18,7 +17,7 @@ function Signup() {
         userPassword: password,
       };
 
-      axios.post(baseURL + "/signup", user).then((data) => {
+      axios.post("/signup", user).then((data) => {
         alert("User signed up. Now Login to continue" + data[0]);
       });
     } else window.alert("Passwords do not match");

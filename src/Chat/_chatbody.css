@@ -58,6 +58,15 @@
   display: grid;
   place-items: center;
   margin-right: 0.4em;
+  cursor: pointer;
+}
+
+.chat
+  > .chat__body
+  > .chat__bodyHeader
+  > .chat__bodyHeaderIcons
+  > .iconContainer:hover {
+  color: rgb(73, 73, 73);
 }
 
 /* The main body CSS start here */

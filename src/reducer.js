@@ -56,7 +56,7 @@ export default function Reducer(state, action) {
         ...state,
         user: { ...state.user },
         contacts: [...state.contacts],
-        messages: [],
+        messages: new Array(0),
       };
     }
 

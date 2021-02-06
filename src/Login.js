@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import axios from "axios";
-import baseURL from "./axios";
+import axios from "./axios";
 import { Context } from "./store.js";
 import { Redirect } from "react-router-dom";
 
@@ -19,7 +18,7 @@ function Login() {
 
     (async function () {
       await axios
-        .post(baseURL + "/login", user)
+        .post("/login", user)
         .then((data) => {
           if (data.status === 200) {
             dispatch({

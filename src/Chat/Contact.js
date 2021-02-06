@@ -8,17 +8,17 @@ function Contact({ item }) {
   const handleClick = (id) => {
     dispatch({
       type: "currentContact/toggled",
-      payload: { currentChat: "" },
-    });
-
-    dispatch({
-      type: "currentContact/toggled",
       payload: { currentChat: id },
     });
   };
 
   return (
-    <div onClick={() => handleClick(item._id)} className="body__chatsContact">
+    <div
+      onClick={() => handleClick(item._id)}
+      className={`body__chatsContact ${
+        state.user.currentChat === item._id && "active"
+      }`}
+    >
       <div className="contact__imgContainer">
         <i className="fas fa-user"></i>
       </div>
