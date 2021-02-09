@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Context } from "../store.js";
+import { Context } from "../api/store";
 
 function Contact({ item }) {
   // eslint-disable-next-line

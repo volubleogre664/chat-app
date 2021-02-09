@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Context } from "../store.js";
+import { Context } from "../api/store.js";
 import Contact from "./Contact.js";
-import axios from "../axios";
+import axios from "../api/axios";
 import Pusher from "pusher-js";
 import "./Chat.css";
 
