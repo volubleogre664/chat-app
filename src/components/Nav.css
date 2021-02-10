@@ -1,0 +1,16 @@
+nav {
+    height: 95px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #707070;
+    color: #fff;
+}
+
+nav .icon {
+    margin-right: 20px;
+    font-size: 35px;
+    color: #7070ff;
+    transform: translateX(180);
+}

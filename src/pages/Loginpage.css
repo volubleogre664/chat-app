@@ -1,0 +1,165 @@
+.body {
+    display: grid;
+    height: calc(100vh - 95px);
+    width: 100%;
+    place-items: center;
+    background: #efefef;
+}
+
+.wrapper {
+    width: 335px;
+    max-height: 448px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: azure;
+    text-decoration: underline;
+    font-weight: thin;
+    transition: all .7s ease-out;
+}
+
+.form-container {
+    width: 100%;
+    height: 100%;
+    padding: 35px 30px;
+    background: #676666;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.slide-controls {
+    width: 200px;
+    border-radius: 10px;
+    height: 40px;
+}
+
+button {
+    width: 50%;
+    height: 100%;
+    padding: 7px 15px;
+    font-size: 1em;
+    outline: none;
+    cursor: pointer;
+}
+
+.form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form .field {
+    width: 275px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding-left: 20px;
+    height: 35px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+
+input[type="password"],
+.signup input[placeholder*="Email"] {
+    margin-top: 20px;
+}
+
+.login input[type="password"] {
+    margin-bottom: 8px;
+}
+
+.form .pass-link {
+    text-align: end;
+    font-family: "Mukta", sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.pass-link .help {
+    margin-top: 5px;
+}
+
+.login-btn,
+.signup-btn {
+    width: 90px;
+    height: 35px;
+    align-self: center;
+    margin-top: 20px;
+    transition: all 0.5s ease-in;
+}
+
+.login-btn {
+    margin-top: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.signup-link,
+.signup-link a,
+.or {
+    text-align: end;
+    font-family: "Mukta", sans-serif;
+    font-weight: normal;
+}
+
+.signup-link a {
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.signup-link{
+    align-self: flex-end;
+    margin-top: 7px;
+    font-size: 12px;
+}
+
+.or {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+._social-media {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+._social-media a .icon {
+    margin-left: 20px;
+}
+
+.icon {
+    font-size: 49px;
+    color: #fff;
+}
+
+.icon .facebook {
+    margin-left: 0;
+    font-size: 44px;
+}
+
