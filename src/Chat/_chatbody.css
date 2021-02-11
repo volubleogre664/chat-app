@@ -7,7 +7,7 @@
 }
 
 .chat > .chat__body > .chat__bodyHeader {
-  padding: 0.726em 1.05em;
+  padding: 0.729em 1.05em;
   display: flex;
   align-items: center;
   background-color: rgb(73, 73, 73);
@@ -199,11 +199,11 @@
 
 /* The footer CSS starts here man */
 .chat > .chat__body > .chat__bodyFooter {
-  padding: 1.05em;
+  padding: 1em;
 }
 
 .chat > .chat__body > .chat__bodyFooter > .chat__bodyFooterContainer {
-  padding: 0.5em 0.8em;
+  padding: 0.2em 0.8em;
   border: 1px solid rgb(162, 162, 162);
   border-radius: 30px;
   display: flex;
@@ -227,6 +227,7 @@
   > .chat__bodyFooter
   > .chat__bodyFooterContainer
   > .iconContainer {
+  width: fit-content;
   cursor: pointer;
   font-size: 1.4rem;
   color: rgb(73, 73, 73);
@@ -244,4 +245,24 @@
   border: none;
   background: transparent;
   outline: none;
+}
+
+@media screen and (max-width: 556px) {
+  .chat > .chat__body {
+    position: absolute;
+    z-index: 100;
+    left: 100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all ease-in-out 0.3s;
+  }
+
+  .chat > .chat__body.opening {
+    left: 0;
+  }
+
+  .chat > .chat__body.closing {
+    left: 100%;
+  }
 }

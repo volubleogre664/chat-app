@@ -15,7 +15,7 @@ function App() {
 
   return (
     <Router>
-      <>
+      <div className="app">
         <Switch>
           <Route exact path="/">
             {state?.user.loggedIn ? <Redirect to="/chat" /> : ""}
@@ -24,11 +24,10 @@ function App() {
           </Route>
 
           <Route path="/chat">
-            {state?.user.loggedIn ? <Redirect to="/" /> : ""}
-            <Chat />
+            {state?.user.loggedIn ? <Redirect to="/" /> : <Chat />}
           </Route>
         </Switch>
-      </>
+      </div>
     </Router>
   );
 }

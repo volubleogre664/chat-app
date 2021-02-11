@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Context } from "../api/store.js";
 import Contact from "./Contact.js";
-import axios from "../api/axios";
+import axios from "../api/axios.js";
 import Pusher from "pusher-js";
 import "./Chat.css";
 
@@ -135,6 +135,13 @@ function Chat() {
 
   const formatTime = (val) => (val >= 10 ? val : `0${val}`);
 
+  const closeMessages = () => {
+    if (window.innerWidth <= 556) {
+      document.querySelector(".chat > .chat__body").classList.toggle("closing");
+      document.querySelector(".chat > .chat__body").classList.toggle("opening");
+    }
+  };
+
   if (!state.user.loggedIn) {
     return <Redirect to="/" />;
   }
@@ -181,7 +188,7 @@ function Chat() {
               <i className="fas fa-paperclip" aria-hidden="true"></i>
             </span>
 
-            <span className="iconContainer">
+            <span className="iconContainer" onClick={closeMessages}>
               <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
             </span>
           </div>
