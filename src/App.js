@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import Chat from "./Chat/Chat";
 import {
   BrowserRouter as Router,
@@ -8,10 +8,10 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Loginpage from "./pages/Loginpage";
-import reducer from "./api/reducer";
+import { Context } from "./api/store";
 
 function App() {
-  const [state] = useReducer(reducer());
+  const [state] = useContext(Context);
 
   return (
     <Router>
