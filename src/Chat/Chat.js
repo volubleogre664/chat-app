@@ -108,7 +108,7 @@ function Chat() {
     e.preventDefault();
 
     if (state.user.currentChat === "") {
-      alert("Please select who you chatting with on tthe left.");
+      alert("Please select who you chatting with on the left.");
       return;
     }
 
