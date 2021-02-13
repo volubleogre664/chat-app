@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Nav from "../components/Nav";
 import Login from '../components/Login';
 import Signup from '../components/Signup';
