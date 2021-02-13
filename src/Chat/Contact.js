@@ -10,6 +10,8 @@ function Contact({ item }) {
       type: "currentContact/toggled",
       payload: { currentChat: id },
     });
+
+    if (window.innerWidth <= 556) toggleChats(id, state);
   };
 
   return (
@@ -35,6 +37,19 @@ function Contact({ item }) {
       </div>
     </div>
   );
+}
+
+function toggleChats(id, state) {
+  const chatsBody = document.querySelector(".chat > .chat__body");
+
+  if (chatsBody.classList.contains("opening") && id === state.user.currentChat)
+    return;
+  else {
+    if (chatsBody.classList.contains("closing"))
+      chatsBody.classList.toggle("closing");
+
+    chatsBody.classList.toggle("opening");
+  }
 }
 
 export default Contact;
