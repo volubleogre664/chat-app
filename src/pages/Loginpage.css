@@ -8,7 +8,7 @@
 
 .wrapper {
     width: 335px;
-    max-height: 448px;
+    min-height: 448px;
 }
 
 a {
@@ -114,6 +114,7 @@ input[type="submit"] {
     border: none;
     font-size: 14px;
     cursor: pointer;
+    background-color: #C3CBE9;
 }
 
 .signup-link,
@@ -161,5 +162,46 @@ input[type="submit"] {
 .icon .facebook {
     margin-left: 0;
     font-size: 44px;
+}
+
+/* Smartphones (portrait) ----------- */
+/* viewport size <= 320px ----------- */
+@media screen and (max-width : 320px) {
+/* Styles */
+    wrapper {
+        width: 285px;
+        min-height: 390px;
+    }
+
+    .form-container {
+        padding: 20px 36px;
+    }
+
+    .slide-controls {
+        width: 180px;
+        height: 38px;
+    }
+
+    button {
+        padding: 5px 12px;
+    }
+
+    .form {
+        margin-top: 30px;
+    }
+
+    .form .field {
+        width: 238px;
+        height: 30px;
+    }
+
+    .icon {
+        font-size: 45px;
+        color: #fff;
+    }
+
+    .icon .facebook {
+        font-size: 40px;
+    }
 }
 
