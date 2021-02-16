@@ -79,11 +79,6 @@ function Chat() {
         .then((data) => {
           if (data.status === 200) {
             dispatch({
-              type: "messages/cleared",
-              payload: { message: [] },
-            });
-
-            dispatch({
               type: "messages/added",
               payload: { message: data.data },
             });
@@ -100,9 +95,6 @@ function Chat() {
   }, [state.user.id, state.user.currentChat, dispatch]);
 
   const handleInputChange = (e) => setText(e.target.value);
-
-  //Getting messages from database
-  // ()();
 
   const handleSendClick = (e) => {
     e.preventDefault();

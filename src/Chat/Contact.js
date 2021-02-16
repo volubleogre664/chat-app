@@ -6,15 +6,17 @@ function Contact({ item }) {
   const [state, dispatch] = useContext(Context);
 
   const handleClick = (id) => {
-    dispatch({
-      type: "currentContact/toggled",
-      payload: { currentChat: id },
-    });
+    if (id !== state.user.currentChat) {
+      dispatch({
+        type: "currentContact/toggled",
+        payload: { currentChat: id },
+      });
 
-    dispatch({
-      type: "messages/cleared",
-      payload: { message: [] },
-    });
+      dispatch({
+        type: "messages/cleared",
+        payload: { message: [] },
+      });
+    }
 
     if (window.innerWidth <= 556) toggleChats(id, state);
   };
