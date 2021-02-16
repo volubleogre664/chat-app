@@ -9,7 +9,7 @@ import "./Chat.css";
 function Chat() {
   const [state, dispatch] = useContext(Context);
   const [text, setText] = useState("");
-  const [lastMessage, setLastMessage] = useState(false);
+  const [lastMessage, setLastMessage] = useState(undefined);
 
   //Use effect hook helps with running code on the first render to set things up
   //It takes a callback to do work and returns cleanup function.
@@ -52,7 +52,7 @@ function Chat() {
                 payload: { message: [data.data] },
               });
               console.log(typeof data.data);
-              setLastMessage(false);
+              setLastMessage(undefined);
             }
           })
           .catch(() => {

@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext } from "react";
 import Chat from "./Chat/Chat";
 import {
   BrowserRouter as Router,
@@ -21,10 +21,19 @@ function App() {
             {state?.user.loggedIn ? <Redirect to="/chat" /> : ""}
 
             <Loginpage />
+
+            <div
+              className="loader-wrapper"
+              style={{ display: state.isPageLoad ? "flex" : "none" }}
+            >
+              <span className="loader">
+                <span className="loader-inner"></span>
+              </span>
+            </div>
           </Route>
 
-          <Route path="/chat">
-            {state?.user.loggedIn ? <Redirect to="/" /> : <Chat />}
+          <Route exact path="/chat">
+            {!state?.user.loggedIn ? <Redirect to="/" /> : <Chat />}
           </Route>
         </Switch>
       </div>

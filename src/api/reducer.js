@@ -33,7 +33,6 @@ export default function Reducer(state, action) {
     }
 
     case "currentContact/toggled": {
-      console.log(action.payload.currentChat);
       return {
         ...state,
         user: { ...state.user, currentChat: action.payload.currentChat },
@@ -57,6 +56,16 @@ export default function Reducer(state, action) {
         user: { ...state.user },
         contacts: [...state.contacts],
         messages: new Array(0),
+      };
+    }
+
+    case "load/toggled": {
+      return {
+        ...state,
+        user: { ...state.user },
+        contacts: [...state.contacts],
+        messages: [...state.messages],
+        isPageLoad: !state.isPageLoad,
       };
     }
 

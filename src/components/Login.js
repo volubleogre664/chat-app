@@ -15,6 +15,11 @@ function Login() {
 
   const loginUser = (e) => {
     e.preventDefault();
+
+    dispatch({
+      type: "load/toggled",
+    });
+
     const user = {
       email: email,
       password: password,
@@ -50,7 +55,7 @@ function Login() {
 
   return (
     <>
-      <form action="#" className="form login">
+      <form className="form login">
         <div className="field">
           <input
             type="text"

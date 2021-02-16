@@ -11,6 +11,11 @@ function Contact({ item }) {
       payload: { currentChat: id },
     });
 
+    dispatch({
+      type: "messages/cleared",
+      payload: { message: [] },
+    });
+
     if (window.innerWidth <= 556) toggleChats(id, state);
   };
 

@@ -12,6 +12,7 @@ const initialState = {
 
   contacts: [],
   messages: [],
+  isPageLoad: false,
 };
 
 const Store = ({ children }) => {

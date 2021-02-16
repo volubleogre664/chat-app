@@ -1,207 +1,207 @@
 .body {
-    display: grid;
-    height: calc(100vh - 95px);
-    width: 100%;
-    place-items: center;
-    background: #efefef;
+  display: grid;
+  height: calc(100vh - 95px);
+  width: 100%;
+  place-items: center;
+  background: #efefef;
 }
 
 .wrapper {
-    width: 335px;
-    min-height: 448px;
+  width: 335px;
+  min-height: 448px;
 }
 
 a {
-    color: #000;
-    text-decoration: none;
+  color: #000;
+  text-decoration: none;
 }
 
 a:hover,
 a:focus {
-    color: azure;
-    text-decoration: underline;
-    font-weight: thin;
-    transition: all .7s ease-out;
+  color: azure;
+  text-decoration: underline;
+  font-weight: thin;
+  transition: all 0.7s ease-out;
 }
 
 .form-container {
-    width: 100%;
-    height: 100%;
-    padding: 35px 30px;
-    background: #676666;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 90%;
+  height: 100%;
+  padding: 35px 30px;
+  background: #676666;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
 }
 
 .slide-controls {
-    width: 200px;
-    border-radius: 10px;
-    height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  height: 40px;
 }
 
 button {
-    width: 50%;
-    height: 100%;
-    padding: 7px 15px;
-    font-size: 1em;
-    outline: none;
-    cursor: pointer;
+  width: 50%;
+  height: 100%;
+  padding: 7px 15px;
+  font-size: 1em;
+  outline: none;
+  cursor: pointer;
 }
 
 .form {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form .field {
-    width: 275px;
+  width: 275px;
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding-left: 20px;
-    height: 35px;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    font-size: 14px;
+  width: 100%;
+  padding-left: 20px;
+  height: 35px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 14px;
 }
 
 input[type="password"],
 .signup input[placeholder*="Email"] {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .login input[type="password"] {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .form .pass-link {
-    text-align: end;
-    font-family: "Mukta", sans-serif;
-    font-size: 12px;
-    font-weight: normal;
+  text-align: end;
+  font-family: "Mukta", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
 }
 
 .pass-link .help {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .login-btn,
 .signup-btn {
-    width: 90px;
-    height: 35px;
-    align-self: center;
-    margin-top: 20px;
-    transition: all 0.5s ease-in;
+  width: 90px;
+  height: 35px;
+  align-self: center;
+  margin-top: 20px;
+  transition: all 0.5s ease-in;
 }
 
 .login-btn {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 input[type="submit"] {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    outline: none;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #C3CBE9;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #c3cbe9;
 }
 
 .signup-link,
 .signup-link a,
 .or {
-    text-align: end;
-    font-family: "Mukta", sans-serif;
-    font-weight: normal;
+  text-align: end;
+  font-family: "Mukta", sans-serif;
+  font-weight: normal;
 }
 
 .signup-link a {
-    font-size: 14px;
-    text-decoration: underline;
+  font-size: 14px;
+  text-decoration: underline;
 }
 
-.signup-link{
-    align-self: flex-end;
-    margin-top: 7px;
-    font-size: 12px;
+.signup-link {
+  align-self: flex-end;
+  margin-top: 7px;
+  font-size: 12px;
 }
 
 .or {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
 }
 
 ._social-media {
-    align-self: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
 }
 
 ._social-media a .icon {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .icon {
-    font-size: 49px;
-    color: #fff;
+  font-size: 49px;
+  color: #fff;
 }
 
 .icon .facebook {
-    margin-left: 0;
-    font-size: 44px;
+  margin-left: 0;
+  font-size: 44px;
 }
 
 /* Smartphones (portrait) ----------- */
 /* viewport size <= 320px ----------- */
-@media screen and (max-width : 320px) {
-/* Styles */
-    wrapper {
-        width: 285px;
-        min-height: 390px;
-    }
+@media screen and (max-width: 320px) {
+  /* Styles */
+  wrapper {
+    width: 285px;
+    min-height: 390px;
+  }
 
-    .form-container {
-        padding: 20px 36px;
-    }
+  .form-container {
+    padding: 20px 36px;
+  }
 
-    .slide-controls {
-        width: 180px;
-        height: 38px;
-    }
+  .slide-controls {
+    width: 180px;
+    height: 38px;
+  }
 
-    button {
-        padding: 5px 12px;
-    }
+  button {
+    padding: 5px 12px;
+  }
 
-    .form {
-        margin-top: 30px;
-    }
+  .form {
+    margin-top: 30px;
+  }
 
-    .form .field {
-        width: 238px;
-        height: 30px;
-    }
+  .form .field {
+    width: 238px;
+    height: 30px;
+  }
 
-    .icon {
-        font-size: 45px;
-        color: #fff;
-    }
+  .icon {
+    font-size: 45px;
+    color: #fff;
+  }
 
-    .icon .facebook {
-        font-size: 40px;
-    }
+  .icon .facebook {
+    font-size: 40px;
+  }
 }
-
