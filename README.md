@@ -1,7 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-The backend is in 
+
+### `The backend code: https://github.com/volubleogre664/chat-app-backend.git`
 
 ## Available Scripts
 
