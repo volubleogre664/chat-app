@@ -6,10 +6,10 @@ function Contact({ item }) {
   const [state, dispatch] = useContext(Context);
 
   const handleClick = (id) => {
-    if (id !== state.user.currentChat) {
+    if (id !== state.user.currentChat.id) {
       dispatch({
         type: "currentContact/toggled",
-        payload: { currentChat: id },
+        payload: { currentChat: { name: item.userName, id } },
       });
 
       dispatch({
@@ -18,14 +18,15 @@ function Contact({ item }) {
       });
     }
 
-    if (window.innerWidth <= 556) toggleChats(id, state);
+    window.innerWidth <= 556 &&
+      document.querySelector(".chat > .chat__body").classList.toggle("opening");
   };
 
   return (
     <div
       onClick={() => handleClick(item._id)}
       className={`body__chatsContact ${
-        state.user.currentChat === item._id && "active"
+        state.user.currentChat.id === item._id && "active"
       }`}
     >
       <div className="contact__imgContainer">
@@ -44,19 +45,6 @@ function Contact({ item }) {
       </div>
     </div>
   );
-}
-
-function toggleChats(id, state) {
-  const chatsBody = document.querySelector(".chat > .chat__body");
-
-  if (chatsBody.classList.contains("opening") && id === state.user.currentChat)
-    return;
-  else {
-    if (chatsBody.classList.contains("closing"))
-      chatsBody.classList.toggle("closing");
-
-    chatsBody.classList.toggle("opening");
-  }
 }
 
 export default Contact;

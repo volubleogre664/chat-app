@@ -6,7 +6,7 @@ const initialState = {
     id: "",
     name: "",
     email: "",
-    currentChat: "",
+    currentChat: { name: "", id: "" },
     loggedIn: false,
   },
 

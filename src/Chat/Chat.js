@@ -14,7 +14,8 @@ function Chat() {
   //Use effect hook helps with running code on the first render to set things up
   //It takes a callback to do work and returns cleanup function.
   //The second argument in useEffect is a array containing values that useEffect depends on.
-  //This means useEffect runs on first render then runs anytime sometthing dependency array changes
+  //This means useEffect runs on first render then runs anytime something in dependency array changes
+  //Empty dependency array means runs only once on first render
   useEffect(() => {
     const pusher = new Pusher("b815b20920e9773a8053", {
       cluster: "ap2",
@@ -70,11 +71,11 @@ function Chat() {
   //This is where we get messages from database.
   useEffect(() => {
     (async function () {
-      if (state.user.currentChat === "") return;
+      if (state.user.currentChat.id === "") return;
 
       await axios
         .get("/message/sync", {
-          params: { from: state.user.id, to: state.user.currentChat },
+          params: { from: state.user.id, to: state.user.currentChat.id },
         })
         .then((data) => {
           if (data.status === 200) {
@@ -90,16 +91,16 @@ function Chat() {
         });
     })();
 
-    //This useEffect only runs when state.user.currentChat changes.
-    // state.user.currentChat is the person you're currently chatting with
-  }, [state.user.id, state.user.currentChat, dispatch]);
+    //This useEffect only runs when state.user.currentChat.id changes.
+    // state.user.currentChat.id is the person you're currently chatting with
+  }, [state.user.id, state.user.currentChat.id, dispatch]);
 
   const handleInputChange = (e) => setText(e.target.value);
 
   const handleSendClick = (e) => {
     e.preventDefault();
 
-    if (state.user.currentChat === "") {
+    if (state.user.currentChat.id === "") {
       alert("Please select who you chatting with on the left.");
       return;
     }
@@ -112,14 +113,14 @@ function Chat() {
 
     //Here we update lastMessage and it will invoke the second useEffect which will update the database
     setLastMessage({
-      to: state.user.currentChat,
+      to: state.user.currentChat.id,
       from: state.user.id,
       time: `${formatTime(d.getHours())}:${formatTime(d.getMinutes())}`,
       message: text,
     });
 
     console.log(lastMessage);
-    console.log(state.user.currentChat);
+    // console.log(state.user.currentChat);
 
     setText("");
     document.querySelector(".footerInput").value = "";
@@ -129,7 +130,6 @@ function Chat() {
 
   const closeMessages = () => {
     if (window.innerWidth <= 556) {
-      document.querySelector(".chat > .chat__body").classList.toggle("closing");
       document.querySelector(".chat > .chat__body").classList.toggle("opening");
     }
   };
@@ -171,7 +171,7 @@ function Chat() {
           </div>
 
           <div className="chat__bodyHeaderUserInfo">
-            <h3 className="user__name">Demo Name</h3>
+            <h3 className="user__name">{state?.user?.currentChat?.name}</h3>
             <span className="user__status">Last seen: 15:43</span>
           </div>
 

@@ -18,17 +18,13 @@ export default function Reducer(state, action) {
       return {
         ...state,
         user: setUser(state.user, action.payload),
-        contacts: [...state.contacts],
-        messages: [...state.messages],
       };
     }
 
     case "contact/added": {
       return {
         ...state,
-        user: { ...state.user },
         contacts: setContacts(state.contacts, action.payload),
-        messages: [...state.messages],
       };
     }
 
@@ -36,16 +32,12 @@ export default function Reducer(state, action) {
       return {
         ...state,
         user: { ...state.user, currentChat: action.payload.currentChat },
-        contacts: [...state.contacts],
-        messages: [...state.messages],
       };
     }
 
     case "messages/added": {
       return {
         ...state,
-        user: { ...state.user },
-        contacts: [...state.contacts],
         messages: [...state.messages, ...action.payload.message],
       };
     }
@@ -53,8 +45,6 @@ export default function Reducer(state, action) {
     case "messages/cleared": {
       return {
         ...state,
-        user: { ...state.user },
-        contacts: [...state.contacts],
         messages: new Array(0),
       };
     }
@@ -62,9 +52,6 @@ export default function Reducer(state, action) {
     case "load/toggled": {
       return {
         ...state,
-        user: { ...state.user },
-        contacts: [...state.contacts],
-        messages: [...state.messages],
         isPageLoad: !state.isPageLoad,
       };
     }
